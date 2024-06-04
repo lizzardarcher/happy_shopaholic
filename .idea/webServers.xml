@@ -3,7 +3,7 @@
   <component name="WebServers">
     <option name="servers">
       <webServer id="738eb959-c881-4269-a0da-7d6324effa0c" name="happy_shopaholic">
-        <fileTransfer rootFolder="/var/www/html" accessType="SFTP" host="212.113.122.6" port="22" sshConfigId="5eefd68e-c22f-431a-ac8f-53fc3a65a018" sshConfig="root@212.113.122.6:22 password">
+        <fileTransfer accessType="SFTP" host="212.113.122.6" port="22" sshConfigId="5eefd68e-c22f-431a-ac8f-53fc3a65a018" sshConfig="root@212.113.122.6:22 password">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>
