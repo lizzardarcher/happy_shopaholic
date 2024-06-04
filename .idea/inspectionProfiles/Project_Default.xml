@@ -1,0 +1,68 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="DuplicatedCode" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <Languages>
+        <language minSize="375" name="Python" />
+      </Languages>
+    </inspection_tool>
+    <inspection_tool class="LossyEncoding" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="14">
+            <item index="0" class="java.lang.String" itemvalue="pytest" />
+            <item index="1" class="java.lang.String" itemvalue="wheel" />
+            <item index="2" class="java.lang.String" itemvalue="aiohttp" />
+            <item index="3" class="java.lang.String" itemvalue="requests" />
+            <item index="4" class="java.lang.String" itemvalue="coreapi" />
+            <item index="5" class="java.lang.String" itemvalue="djangorestframework-simplejwt" />
+            <item index="6" class="java.lang.String" itemvalue="social-auth-app-django" />
+            <item index="7" class="java.lang.String" itemvalue="django-rest-polymorphic" />
+            <item index="8" class="java.lang.String" itemvalue="moviepy" />
+            <item index="9" class="java.lang.String" itemvalue="djoser" />
+            <item index="10" class="java.lang.String" itemvalue="instabot" />
+            <item index="11" class="java.lang.String" itemvalue="openapi-codec" />
+            <item index="12" class="java.lang.String" itemvalue="drf-yasg" />
+            <item index="13" class="java.lang.String" itemvalue="sqlparse" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyPep8Inspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="E501" />
+          <option value="E701" />
+          <option value="E722" />
+          <option value="E117" />
+          <option value="E302" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyPep8NamingInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="N801" />
+          <option value="N806" />
+          <option value="N802" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="backend.base.urls.order_urls.base" />
+          <option value="backend.backend.urls.base" />
+          <option value="bcolors" />
+          <option value="update" />
+          <option value="gsheets.base.views.base" />
+          <option value="gsheets.gsheets.urls.base" />
+          <option value="backend.api.views.recipes" />
+          <option value="backend.api.views.*" />
+          <option value="database" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>

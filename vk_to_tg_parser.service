@@ -1,0 +1,15 @@
+[Unit]
+Description=Telegram bot 'Vk to Telegram Parser'
+After=syslog.target
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/var/www/html/happy_shopaholic
+ExecStart=/usr/bin/python3.8 /var/www/html/happy_shopaholic/main.py
+RestartSec=10
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
