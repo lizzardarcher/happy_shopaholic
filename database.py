@@ -36,7 +36,7 @@ def get_not_sent(db):
     try:
         with sql.connect(db, timeout=100, check_same_thread=False) as conn:
             cur = conn.cursor()
-            result = cur.execute(f'SELECT * FROM {post_table} WHERE is_sent=?', ('False',)).fetchall()
+            result = cur.execute(f'SELECT post_id, text, photo_list, is_sent FROM {post_table} WHERE is_sent=?', (0,)).fetchall()
     except:
         print(traceback.format_exc())
     return result
@@ -46,9 +46,9 @@ def update_sent(db, val):
     try:
         with sql.connect(db, timeout=100, check_same_thread=False) as conn:
             cur = conn.cursor()
-            cur.execute(f'UPDATE {post_table} SET is_sent=? WHERE post_id=?', ('True', val))
+            update = cur.execute(f'UPDATE {post_table} SET is_sent=? WHERE post_id=?', (1, val))
             conn.commit()
-            print('post_id', val, 'Updated')
+            print(f'[POST_ID] [{val}] [UPDATED] [UPDATE_STATUS:{update}]')
     except:
         print(traceback.format_exc())
 

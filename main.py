@@ -34,9 +34,8 @@ def get_items(vk_url) -> list:
                             # save_media(photo)  # Сохраняем фото на сервер
                 except:pass
             except:
-                ...
-                # print(traceback.format_exc())
-            item_list.append((post_id, text, str(photo_list), 'False'))
+                print(traceback.format_exc())
+            item_list.append((post_id, text, str(photo_list), 0))
         del photo_list
     except:
         item_list = []
@@ -61,19 +60,17 @@ def send_to_tg():
                 text = i[1]
                 photo_list = ast.literal_eval(i[2])
                 is_sent = i[3]
+                print(post_id, is_sent)
                 # print(len(photo_list))
                 if not photo_list:
                     bot.send_message(chat_id=tg_channel, text=text)
                     update_sent(local_db, post_id)
-                    print('Message sent with no photo')
-
+                    print('MESSAGE SEND WITHOUT ANY MEDIA')
                 elif len(photo_list) == 1:
                     photo = photo_list[0]
                     bot.send_photo(chat_id=tg_channel, caption=text, photo=photo)
-                    print('Message sent with', photo)
+                    print('MESSAGE SEND WITH PHOTO', photo)
                     update_sent(local_db, post_id)
-
-
                 else:
                     print(f'[POST ID] [{post_id}]')
                     media = []
@@ -92,110 +89,17 @@ def send_to_tg():
                             media.append(InputMediaPhoto(media=photo))
 
                     bot.send_media_group(chat_id=tg_channel, media=media)
+                    print(f'[MESSAGE SEND WITH MEDIA_GROUP] [{media}]')
                     update_sent(local_db, post_id)
 
-
-                # elif len(photo_list) > 1:
-                #     if len(photo_list) == 2:
-                #         bot.send_media_group(chat_id=tg_channel,
-                #                              media=[InputMediaPhoto(media=photo_list[0], caption=text),
-                #                                     InputMediaPhoto(media=photo_list[1]),
-                #                                     ]
-                #                              )
-                #     elif len(photo_list) == 3:
-                #         bot.send_media_group(chat_id=tg_channel,
-                #                              media=[InputMediaPhoto(media=photo_list[0], caption=text),
-                #                                     InputMediaPhoto(media=photo_list[1]),
-                #                                     InputMediaPhoto(media=photo_list[2]),
-                #                                     ]
-                #                              )
-                #     elif len(photo_list) == 4:
-                #         bot.send_media_group(chat_id=tg_channel,
-                #                              media=[InputMediaPhoto(media=photo_list[0], caption=text),
-                #                                     InputMediaPhoto(media=photo_list[1]),
-                #                                     InputMediaPhoto(media=photo_list[2]),
-                #                                     InputMediaPhoto(media=photo_list[3]),
-                #                                     ]
-                #                              )
-                #     elif len(photo_list) == 5:
-                #         bot.send_media_group(chat_id=tg_channel,
-                #                              media=[InputMediaPhoto(media=photo_list[0], caption=text),
-                #                                     InputMediaPhoto(media=photo_list[1]),
-                #                                     InputMediaPhoto(media=photo_list[2]),
-                #                                     InputMediaPhoto(media=photo_list[3]),
-                #                                     InputMediaPhoto(media=photo_list[4]),
-                #                                     ]
-                #                              )
-                #     elif len(photo_list) == 6:
-                #         bot.send_media_group(chat_id=tg_channel,
-                #                              media=[InputMediaPhoto(media=photo_list[0], caption=text),
-                #                                     InputMediaPhoto(media=photo_list[1]),
-                #                                     InputMediaPhoto(media=photo_list[2]),
-                #                                     InputMediaPhoto(media=photo_list[3]),
-                #                                     InputMediaPhoto(media=photo_list[4]),
-                #                                     InputMediaPhoto(media=photo_list[5]),
-                #                                     ]
-                #                              )
-                #     elif len(photo_list) == 7:
-                #         bot.send_media_group(chat_id=tg_channel,
-                #                              media=[InputMediaPhoto(media=photo_list[0], caption=text),
-                #                                     InputMediaPhoto(media=photo_list[1]),
-                #                                     InputMediaPhoto(media=photo_list[2]),
-                #                                     InputMediaPhoto(media=photo_list[3]),
-                #                                     InputMediaPhoto(media=photo_list[4]),
-                #                                     InputMediaPhoto(media=photo_list[5]),
-                #                                     InputMediaPhoto(media=photo_list[6]),
-                #                                     ]
-                #                              )
-                #     elif len(photo_list) == 8:
-                #         bot.send_media_group(chat_id=tg_channel,
-                #                              media=[InputMediaPhoto(media=photo_list[0], caption=text),
-                #                                     InputMediaPhoto(media=photo_list[1]),
-                #                                     InputMediaPhoto(media=photo_list[2]),
-                #                                     InputMediaPhoto(media=photo_list[3]),
-                #                                     InputMediaPhoto(media=photo_list[4]),
-                #                                     InputMediaPhoto(media=photo_list[5]),
-                #                                     InputMediaPhoto(media=photo_list[6]),
-                #                                     InputMediaPhoto(media=photo_list[7]),
-                #                                     ]
-                #                              )
-                #     elif len(photo_list) == 9:
-                #         bot.send_media_group(chat_id=tg_channel,
-                #                              media=[InputMediaPhoto(media=photo_list[0], caption=text),
-                #                                     InputMediaPhoto(media=photo_list[1]),
-                #                                     InputMediaPhoto(media=photo_list[2]),
-                #                                     InputMediaPhoto(media=photo_list[3]),
-                #                                     InputMediaPhoto(media=photo_list[4]),
-                #                                     InputMediaPhoto(media=photo_list[5]),
-                #                                     InputMediaPhoto(media=photo_list[6]),
-                #                                     InputMediaPhoto(media=photo_list[7]),
-                #                                     InputMediaPhoto(media=photo_list[8]),
-                #                                     ]
-                #                              )
-                #     elif len(photo_list) == 10:
-                #         bot.send_media_group(chat_id=tg_channel,
-                #                              media=[InputMediaPhoto(media=photo_list[0], caption=text),
-                #                                     InputMediaPhoto(media=photo_list[1]),
-                #                                     InputMediaPhoto(media=photo_list[2]),
-                #                                     InputMediaPhoto(media=photo_list[3]),
-                #                                     InputMediaPhoto(media=photo_list[4]),
-                #                                     InputMediaPhoto(media=photo_list[5]),
-                #                                     InputMediaPhoto(media=photo_list[6]),
-                #                                     InputMediaPhoto(media=photo_list[7]),
-                #                                     InputMediaPhoto(media=photo_list[8]),
-                #                                     InputMediaPhoto(media=photo_list[9]),
-                #                                     ]
-                #                              )
-                #     update_sent(local_db, post_id)
             except Exception as e:
-                ...
                 print(e)
-            sleep(5)
-        sleep(5)
+            sleep(6.5)
+        sleep(30)
 
 
 if __name__ == '__main__':
-    initiate(local_db)
+    # initiate(local_db)
 
     t1 = Thread(target=get_from_vk)
     t2 = Thread(target=send_to_tg)

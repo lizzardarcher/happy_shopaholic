@@ -10,6 +10,7 @@ admin.site.index_title = "Добро пожаловать в HappyShopaholic А�
 # admin.site.unregister(DjangoUser)
 admin.site.unregister(Group)
 
+
 class UserAdmin(admin.ModelAdmin):
     list_display = ('date_time',
                     'username',
@@ -45,6 +46,7 @@ class UserAdmin(admin.ModelAdmin):
               'photo']
     empty_value_display = ""
     ordering = ['date_time', 'is_ordered']
+
 
 class BotAdmin(admin.ModelAdmin):
     list_display = ('token',)
