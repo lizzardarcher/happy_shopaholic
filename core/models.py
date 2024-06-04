@@ -52,9 +52,9 @@ class User(models.Model):
     size = models.CharField(max_length=20, null=True, blank=True, choices=SIZE, verbose_name='Размер')
     amount = models.IntegerField(null=True, blank=True, verbose_name='Кол-во')
     price = models.CharField(max_length=500, null=True, blank=True, verbose_name='Цена')
-    free_order = models.CharField(max_length=500, null=True, blank=True, verbose_name='Заказ в свободной форме')
+    free_order = models.TextField(max_length=500, null=True, blank=True, verbose_name='Заказ в свободной форме')
     is_ordered = models.BooleanField(default=False, null=True, blank=True, verbose_name='Оформление Завершено')
-    date_time = models.DateTimeField(default=now(), verbose_name='Дата и время заказа')
+    date_time = models.DateTimeField(auto_now_add=True, verbose_name='Дата и время заказа')
 
     def __str__(self):
         if self.is_ordered:
@@ -68,7 +68,7 @@ class User(models.Model):
 
 
 class Happyshopaholic(models.Model):
-    post_id = models.IntegerField(null=False, blank=True, verbose_name='ID поста')
+    post_id = models.IntegerField(unique=True, null=False, blank=True, verbose_name='ID поста')
     text = models.TextField(max_length=1024, null=True, blank=True, verbose_name='Текст')
     photo_list = models.TextField(max_length=100000, null=True, blank=True, verbose_name='URL Фото VK')
     is_sent = models.BooleanField(default=False, null=True, blank=True, verbose_name='Отправлено')

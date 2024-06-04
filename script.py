@@ -205,7 +205,8 @@ def callback_query_handlers(call):
             delete_message(call.message.id)
 
             def get_size(message):
-                if str(message.text).upper().replace(',', '.') in SIZE:
+                # if str(message.text).upper().replace(',', '.') in SIZE:
+                if SIZE:
                     size = message.text
 
                     #  Сохраняем размер в БД

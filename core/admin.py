@@ -57,7 +57,7 @@ class AdminSettingsAdmin(admin.ModelAdmin):
 
 
 class HappyshopaholicAAdmin(admin.ModelAdmin):
-    list_display = ('post_id', 'is_sent')
+    list_display = ('post_id', 'text', 'is_sent')
     fields = ['post_id', 'text', 'photo_list', 'is_sent']
     search_fields = ('post_id', 'text')
     # search_help_text = 'Поиск'

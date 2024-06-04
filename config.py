@@ -7,7 +7,7 @@ url = f'https://api.vk.com/method/wall.get?domain={group_name}&count={count}&acc
 
 local_db = 'my_database.sqlite'
 
-tg_token = '5383269929:AAHXjh9u_KUWlAH2HrD3Z6Sthul5qVC4fLI'
+tg_token = '6571927076:AAFgkCmCC7T_DN25bY0hnX2bdRUgf8itfms'
 
 tg_channel = '-1001701702209'
 # tg_channel = '-1001885966596'  # тестовый канал
