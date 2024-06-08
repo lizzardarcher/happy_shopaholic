@@ -10,6 +10,15 @@ from telebot.types import InputMediaPhoto
 from config import url, local_db, tg_token, tg_channel
 from database import write_to_db, initiate, get_not_sent, update_sent, save_media
 
+text_link = '''Для самостоятельного оформления заказа перейдите по ссылке ниже️'''
+
+
+def link_markup():
+    markup = telebot.types.InlineKeyboardMarkup()
+    url = telebot.types.InlineKeyboardButton(text='Сделать заказ', url='https://t.me/helperwishesbot')
+    markup.add(url)
+    return markup
+
 
 def get_items(vk_url) -> list:
     try:
@@ -32,7 +41,8 @@ def get_items(vk_url) -> list:
                             photo = i['photo']['sizes'][-1]['url']
                             photo_list.append(photo)
                             # save_media(photo)  # Сохраняем фото на сервер
-                except:pass
+                except:
+                    pass
             except:
                 print(traceback.format_exc())
             item_list.append((post_id, text, str(photo_list), 0))
@@ -64,11 +74,13 @@ def send_to_tg():
                 # print(len(photo_list))
                 if not photo_list:
                     bot.send_message(chat_id=tg_channel, text=text)
+                    bot.send_message(chat_id=tg_channel, text=text_link, reply_markup=link_markup())
                     update_sent(local_db, post_id)
                     print('MESSAGE SEND WITHOUT ANY MEDIA')
                 elif len(photo_list) == 1:
                     photo = photo_list[0]
                     bot.send_photo(chat_id=tg_channel, caption=text, photo=photo)
+                    bot.send_message(chat_id=tg_channel, text=text_link, reply_markup=link_markup())
                     print('MESSAGE SEND WITH PHOTO', photo)
                     update_sent(local_db, post_id)
                 else:
@@ -81,7 +93,8 @@ def send_to_tg():
                             try:
                                 photo_list.remove(photo)
                                 print(f'[REMOVED] [{photo[:50]}]')
-                            except:pass
+                            except:
+                                pass
                     for photo in photo_list:
                         if not media:
                             media.append(InputMediaPhoto(media=photo, caption=text))
@@ -89,9 +102,9 @@ def send_to_tg():
                             media.append(InputMediaPhoto(media=photo))
 
                     bot.send_media_group(chat_id=tg_channel, media=media)
+                    bot.send_message(chat_id=tg_channel, text=text_link, reply_markup=link_markup())
                     print(f'[MESSAGE SEND WITH MEDIA_GROUP] [{media}]')
                     update_sent(local_db, post_id)
-
             except Exception as e:
                 print(e)
             sleep(6.5)
