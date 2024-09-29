@@ -1,3 +1,4 @@
 # Project exclude paths
 /venv/
 my_database.sqlite
+/happy_shopaholic/settings.py
