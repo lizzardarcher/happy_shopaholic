@@ -15,7 +15,7 @@ text_link = '''Для самостоятельного оформления за
 
 def link_markup():
     markup = telebot.types.InlineKeyboardMarkup()
-    url = telebot.types.InlineKeyboardButton(text='Сделать заказ', url='https://t.me/helperwishesbot')
+    url = telebot.types.InlineKeyboardButton(text='Сделать заказ', url='https://t.me/HelpShopaholicBot')
     markup.add(url)
     return markup
 
