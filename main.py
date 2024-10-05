@@ -102,7 +102,7 @@ def send_to_tg():
                             media.append(InputMediaPhoto(media=photo))
 
                     bot.send_media_group(chat_id=tg_channel, media=media)
-                    bot.send_message(chat_id=tg_channel, text=text_link, reply_markup=link_markup())
+                    # bot.send_message(chat_id=tg_channel, text=text_link, reply_markup=link_markup())
                     print(f'[MESSAGE SEND WITH MEDIA_GROUP] [{media}]')
                     update_sent(local_db, post_id)
             except Exception as e:
